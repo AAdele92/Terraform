@@ -1,0 +1,25 @@
+terraform {
+  required_version = "~>1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~>4.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.region
+  default_tags {
+    tags = {
+      BillingID = "ade account"
+      Project   = "ade_app"
+    }
+  }
+}
+
+variable "environment" {
+  type        = string
+  description = "enviroment to deploy"
+  default     = "dev"
+}
